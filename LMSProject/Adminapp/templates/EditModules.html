@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'AdmIndex.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Modules</title>
+</head>
+<body>
+<form method="post" action="{% url 'Moduleupdate' moduleid=module.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-sm-12 col-xl-12">
+        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">MODULES</h6>
+                            <div class="form-floating mb-3">
+                                <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingIp" placeholder="Subject Name" name="subject" value="{{module.Subject}}">
+                                <label for="floatingIp">Subject</label>
+                            </div>
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Module Name" name="ModName" value="{{module.NewModule}}">
+                                <label for="floatingInput">New Module</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingPassword" placeholder="Title" value="{{module.Material}}" name="NewMaterial">
+                                <label for="floatingPassword">New Assignment/Study Material</label>
+                            </div>
+<!--                            <div class="form-floating mb-3">-->
+<!--                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">-->
+<!--                                    <option selected="">Open this select menu</option>-->
+<!--                                    <option value="1">One</option>-->
+<!--                                    <option value="2">Two</option>-->
+<!--                                    <option value="3">Three</option>-->
+<!--                                </select>-->
+<!--                                <label for="floatingSelect">Works with selects</label>-->
+<!--                            </div>-->
+<!--                            <div class="form-floating">-->
+<!--                                <textarea class="form-control" placeholder="Comments from Users" id="floatingTextarea" style="height: 150px;" name="comments"></textarea>-->
+<!--                                <label for="floatingTextarea">Comments</label>-->
+<!--                            </div>-->
+                            <div class="mb-3">
+                                <label for="formFileMultiple" class="form-label">Assignments/StudyMaterial</label>
+                                <input class="form-control bg-dark" type="file" id="formFileMultiple" name="fileMaterial" multiple="">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Module Image</label>
+                                <input class="form-control bg-dark" type="file"  name="imge" multiple="">
+                            </div>
+                            <select class="form-select mb-3" aria-label="Default select example" name="select">
+                                <option>{{module.Select}}</option>
+                                <option>Assignments</option>
+                                <option>Study Material</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
+{% endblock %}

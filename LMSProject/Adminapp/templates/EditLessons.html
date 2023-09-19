@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% extends 'AdmIndex.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Lessons</title>
+</head>
+<body>
+
+<form method="post" action="{% url 'Lessonupdate' lessonid=lesson.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-sm-12 col-xl-10">
+        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">LESSONS</h6>
+                            <div class="form-floating mb-3">
+
+                                <select class="form-select" name="subName" id="floatingSelect" aria-label="Floating label select example">
+                                    {% for d in module %}
+
+                                    <option>{{d.Subject}}</option>
+                                    {% endfor %}
+                                </select>
+                                <label for="floatingSelect">Subject Select</label>
+                            </div>
+<!--                            <div class="form-floating mb-3">-->
+<!--                                <input type="text" class="form-control" id="floatingInput" value="{{d.NewModule}}">-->
+<!--                                <label for="floatingInput">New Module</label>-->
+<!--                            </div>-->
+
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Lesson Name" value="{{lesson.LessonName}}" name="LessonName">
+                                <label for="floatingInput">New Lesson</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="file" class="form-control" id="formFile" placeholder="Add Video" name="video">
+                                <video src="{{lesson.Video.url}}">Videos</video>
+                                <label for="formFile">New Video material</label>
+                            </div>
+<!--                            <div class="form-floating mb-3">-->
+<!--                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">-->
+<!--                                    <option selected="">Open this select menu</option>-->
+<!--                                    <option value="1">One</option>-->
+<!--                                    <option value="2">Two</option>-->
+<!--                                    <option value="3">Three</option>-->
+<!--                                </select>-->
+<!--                                <label for="floatingSelect">Works with selects</label>-->
+<!--                            </div>-->
+<!--                            <div class="form-floating">-->
+<!--                                <textarea class="form-control" placeholder="Comments from Users" id="floatingTextarea" style="height: 150px;" name="comments"></textarea>-->
+<!--                                <label for="floatingTextarea">Comments</label>-->
+<!--                            </div>-->
+                            <div class="mb-3">
+                                <label for="formFileMultiple" class="form-label">Study Material</label><br>
+                                <a href="{{lesson.Image.url}}">Study Material</a><br>
+                                <input class="form-control bg-dark" type="file" id="formFileMultiple" name="image" multiple="">
+                            </div>
+
+<!--                            <select class="form-select mb-3" aria-label="Default select example" name="select">-->
+<!--                                <option selected="">Select</option>-->
+<!--                                <option>Assignments</option>-->
+<!--                                <option>Study Material</option>-->
+<!--                            </select>-->
+                            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
+{% endblock %}

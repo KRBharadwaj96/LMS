@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'AdmIndex.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Lessons</title>
+</head>
+<body>
+
+<div class="col-xl-12 col-l-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Display Lesson</h6>
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Subject Name</th>
+                                        <th scope="col">Lesson</th>
+                                        <th scope="col">Videos</th>
+                                        <th scope="col">Study Material</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in lesson %}
+                                    <tr>
+                                        <td>{{i.SubName}}</td>
+                                        <td>{{i.LessonName}}</td>
+                                        <td>{{i.Videos}}</td>
+                                        <td>{{i.Study_m}}</td>
+                                        <td>
+                                            <form action="{% url 'Lessonedit' lessonid=i.id %}">
+                                                <button class="btn btn-info btn-round waves-effect waves-light">Edit</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="{% url 'Lessondelete' lessonid=i.id %}">
+                                                <button class="btn btn-info btn-round waves-effect waves-dark">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+</body>
+</html>
+{% endblock %}

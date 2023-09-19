@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'AdmIndex.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Modules</title>
+</head>
+<body>
+<div class="col-xl-12 col-l-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">User Contact Table</h6>
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Subject</th>
+                                        <th scope="col">Message</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in contacting %}
+                                    <tr>
+                                        <td>{{i.Subject}}</td>
+                                        <td>{{i.Message}}</td>
+                                        <td>{{i.Name}}</td>
+                                        <td>{{i.Email}}</td>
+
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+</body>
+</html>
+{% endblock %}

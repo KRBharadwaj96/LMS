@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% extends 'Indexpage.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment Submit</title>
+</head>
+<body>
+<div class="whole-wrap">
+	<div class="container box_1170">
+		<div class="section-top-border">
+
+			<div class="row">
+
+				<div class="nice-select">
+
+				<select>
+					{% for j in mddata %}
+					<option>{{j.NewModule}}</option>
+					{% endfor %}
+				</select>
+
+				</div>
+
+		</div>
+		</div>
+
+		<div class="row">
+
+					<div class="col-lg-12">
+						<blockquote class="generic-blockquote">
+
+							<div class="col-lg-8 col-md-8">
+								<h3 class="mb-30">Student Details</h3>
+									<form method="post" action="{% url 'assignment_save' %}" enctype="multipart/form-data">
+										{% csrf_token %}
+										<div class="mt-10">
+											<input type="text" name="assignment_name" placeholder="Assignment Name"  required="" class="single-input">
+										</div>
+										<div class="mt-10">
+											<input type="text" name="student_name" placeholder="Student Name"  required="" class="single-input" value="{{request.session.name}}">
+										</div>
+
+										<div class="mt-10">
+											{% if request.session.username %}
+											<input type="email" name="email" placeholder="Email address" value="{{ request.session.username }}" required="" class="single-input">
+											{% endif %}
+										</div>
+
+											<div class="mt-10">
+												<textarea class="single-textarea" placeholder="Comments" name="comments"></textarea>
+											</div>
+											<div class="mt-5">
+												  <h1 class="form-label single-input" style="font-size:15px; margin-right:20px">Upload Assignment</h1>
+												  <input class="form-control form-control-lg" type="file" id="formFile" name="upload">
+											</div>
+											<div class="button-group-area mt-10">
+												<button type="submit" class="genric-btn success-border circle arrow">Submit<span class="lnr lnr-arrow-right"></span></button>
+											</div>
+
+									</form>
+							</div>
+						</blockquote>
+		</div>
+
+
+
+		</div>
+	</div>
+
+</div>
+
+
+
+</body>
+</html>
+{% endblock %}
